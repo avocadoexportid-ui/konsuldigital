@@ -1,0 +1,175 @@
+/* ==================== BASE ==================== */
+* { -webkit-font-smoothing: antialiased; }
+
+body { font-family: 'Inter', sans-serif; }
+
+html { scroll-behavior: smooth; }
+
+/* Anchor offset for sticky nav */
+section[id] { scroll-margin-top: 80px; }
+
+/* ==================== SCROLLBAR ==================== */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #F5F3F0; }
+::-webkit-scrollbar-thumb { background: #4A5D23; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #3A4A1C; }
+
+/* ==================== SHADCN-STYLE COMPONENTS ==================== */
+
+/* Badge */
+.badge-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  background: rgba(74, 93, 35, 0.1);
+  color: #4A5D23;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.badge-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  background: rgba(212, 163, 115, 0.15);
+  color: #B88652;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #4A5D23;
+  color: #F5F3F0;
+  font-weight: 600;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.75rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(74, 93, 35, 0.2);
+}
+.btn-primary:hover {
+  background: #3A4A1C;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(74, 93, 35, 0.35);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #4A5D23;
+  font-weight: 600;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1.5px solid #4A5D23;
+  transition: all 0.25s ease;
+}
+.btn-outline:hover {
+  background: #4A5D23;
+  color: #F5F3F0;
+  transform: translateY(-1px);
+}
+
+/* Card */
+.card {
+  background: #FFFFFF;
+  border: 1px solid #E8E5E0;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 15px rgba(74, 93, 35, 0.06);
+  transition: all 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 12px 40px rgba(74, 93, 35, 0.12);
+  transform: translateY(-4px);
+}
+
+/* Form Input */
+.form-input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 1.5px solid #E8E5E0;
+  border-radius: 0.625rem;
+  background: #FFFFFF;
+  color: #3A4A1C;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  outline: none;
+}
+.form-input:focus {
+  border-color: #4A5D23;
+  box-shadow: 0 0 0 3px rgba(74, 93, 35, 0.1);
+}
+.form-input::placeholder { color: #9CA3AF; }
+
+/* ==================== NAVBAR SCROLL STATE ==================== */
+#navbar.scrolled {
+  background: rgba(245, 243, 240, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #E8E5E0;
+}
+
+/* ==================== FADE-IN ANIMATION (vanilla alternative to framer-motion) ==================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+
+/* ==================== PRICING CARD POPULAR ==================== */
+.pricing-popular {
+  border: 2px solid #D4A373 !important;
+  position: relative;
+  transform: scale(1.03);
+}
+@media (max-width: 768px) {
+  .pricing-popular { transform: scale(1); }
+}
+
+/* ==================== PROCESS TIMELINE ==================== */
+.process-step { position: relative; z-index: 10; }
+
+/* ==================== FAQ ACCORDION ==================== */
+.faq-item { transition: all 0.3s ease; }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding-top: 0.75rem;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-icon { transition: transform 0.3s ease; }
+
+/* ==================== PORTFOLIO CARD IMAGE OVERLAY ==================== */
+.portfolio-img-wrapper { position: relative; overflow: hidden; }
+.portfolio-img-wrapper img {
+  transition: transform 0.5s ease;
+}
+.portfolio-card:hover .portfolio-img-wrapper img {
+  transform: scale(1.08);
+}
